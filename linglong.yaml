@@ -1,0 +1,33 @@
+package:
+  id: gst-plugins-ugly1.0
+  name: gst-plugins-ugly1.0
+  version: 1.14.4.2
+  kind: lib
+  discription: |
+    gst plugins.
+
+base:
+  id: org.deepin.base
+  version: 20.5.0
+
+depends:
+- id: gstreamer1.0
+  version: 1.14.6
+
+source:
+  kind: git
+  url: https://github.com/deepin-community/gst-plugins-ugly1.0.git
+  version: master
+  commit: 05eab901b15e3393c63f0088769697056ad364dc
+
+  patch: []
+variables:
+  extra_args: |
+    --disable-examples \
+    --enable-DEBUG \
+    --enable-debug \
+    --disable-gtk-doc \
+    --with-x264-libraries="${PREFIX}/lib/*/x264-10bit/libx264.so.*"
+
+build:
+  kind: autotools
